@@ -1,0 +1,3 @@
+---
+gitlab_ci_runner_apt_key: 'https://packages.gitlab.com/gpg.key'
+gitlab_ci_runner_apt_url: 'https://packages.gitlab.com/runner/gitlab-ci-multi-runner'
