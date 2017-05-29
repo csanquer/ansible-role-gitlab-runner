@@ -17,6 +17,13 @@
   with_items: "{{ gitlab_ci_runner_registration }}"
 
 - name: register runner
-  command: gitlab-runner register -n -u {{ item.item.url }} -r {{ item.item.token }} --name {{ item.item.name }} --executor {{ item.item.shell|default('shell') }}
+  command: >
+    gitlab-runner register -n
+    --url {{ item.item.url }}
+    --registration-token {{ item.item.token }}
+    --name {{ item.item.name }}
+    --executor {{ item.item.executor|default('docker') }}
+    --docker-image {{ item.item.docker_image|default('python:2.7') }}
+
   when: item.stdout == '0'
   with_items: "{{ gitlab_ci_registered_runner_result.results }}"

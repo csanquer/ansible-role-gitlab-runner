@@ -8,4 +8,4 @@ gitlab_ci_runner_registration: []
     #     name: ci-runner<num>
     #     url: https://git.kilix.net/ci
     #     token: <gitlab ci token>
-    #     exectutor: shell
+    #     executor: shell
