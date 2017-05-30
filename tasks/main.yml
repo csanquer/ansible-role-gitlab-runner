@@ -8,3 +8,8 @@
   tags:
     - gitlab-ci-runner
     - ci-runner
+
+- include: cleanup.yml
+  tags:
+    - gitlab-ci-runner
+    - ci-runner
