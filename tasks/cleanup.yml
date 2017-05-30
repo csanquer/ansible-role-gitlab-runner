@@ -6,7 +6,6 @@
     env: "{{ gitlab_ci_cleanup_env }}"
     command: redis-server --appendonly yes
     restart_policy: always
-    restart_retries: 10
     state: present
     recreate: yes
     volumes_from: "{{ gitlab_ci_cleanup_container_volumes }}"
