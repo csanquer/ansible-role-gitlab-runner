@@ -8,5 +8,5 @@
     restart_policy: always
     state: present
     recreate: yes
-    volumes_from: "{{ gitlab_ci_cleanup_container_volumes }}"
+    volumes: "{{ gitlab_ci_cleanup_container_volumes }}"
   when: gitlab_ci_cleanup_docker_enabled
