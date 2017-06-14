@@ -7,7 +7,7 @@ gitlab_ci_runner_registration: []
     # -
     #     name: ci-runner<num>
     #     url: https://git.kilix.net/ci
-    #     token: <gitlab ci token>
+    #     registration-token: <gitlab ci token>
     #     executor: shell
 
 gitlab_ci_cleanup_docker_enabled: false

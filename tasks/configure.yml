@@ -19,11 +19,6 @@
 - name: register runner
   command: >
     gitlab-runner register -n
-    --url {{ item.item.url }}
-    --registration-token {{ item.item.token }}
-    --name {{ item.item.name }}
-    --executor {{ item.item.executor|default('docker') }}
-    --docker-image {{ item.item.docker_image|default('python:2.7') }}
-
+    {% for key,value in item.item.iteritems() %}{% if value %}--{{ key|replace('_', '-') }}{% if value is string %} '{{ value }}'{% endif %} {% endif %}{% endfor %}
   when: item.stdout == '0'
   with_items: "{{ gitlab_ci_registered_runner_result.results }}"
