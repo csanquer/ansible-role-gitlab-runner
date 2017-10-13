@@ -7,8 +7,11 @@
 
 - name: add gitlab-ci-runner main repository
   apt_repository:
-    repo: 'deb {{ gitlab_ci_runner_apt_url }}/{{ ansible_lsb.id|lower }}/ {{ ansible_lsb.codename|lower }} main'
+    repo: '{{ item }} {{ gitlab_ci_runner_apt_url }}/{{ ansible_lsb.id|lower }}/ {{ ansible_lsb.codename|lower }} main'
     state: present
+  with_items:
+    - deb
+    - deb-src
   when: ansible_lsb.id == 'Debian' or ansible_lsb.id == 'Ubuntu'
   register: gitlab_ci_runner_apt_result
 
@@ -19,5 +22,5 @@
 
 - name: install gitlab-ci runner
   apt:
-    name: gitlab-ci-multi-runner
+    name: gitlab-runner
     state: "{{ gitlab_ci_runner_state}}"
