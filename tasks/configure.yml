@@ -25,6 +25,7 @@
     --executor {{ item.item.executor|default('docker') }}
     --locked={{ 'true' if (item.item.locked|default(false)) else 'false' }}
     --docker-image {{ item.item.docker_image|default('python:2.7') }}
+    --locked={{ 'true' if item.item.locked|default(false) else 'false' }}
     {{ ' --docker-privileged ' if (item.item.docker_privileged|default(false)) else '' }}
 
   when: item.stdout == '0'

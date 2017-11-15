@@ -22,5 +22,5 @@
 
 - name: install gitlab-ci runner
   apt:
-    name: gitlab-runner
-    state: "{{ gitlab_ci_runner_state}}"
+    name: "gitlab-runner{{ ('=' ~ gitlab_ci_runner_version) if gitlab_ci_runner_version != '' else '' }}"
+    state: "{{ 'present' if gitlab_ci_runner_version != '' else gitlab_ci_runner_state }}"

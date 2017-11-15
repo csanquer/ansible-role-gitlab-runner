@@ -1,5 +1,6 @@
 ---
 gitlab_ci_runner_state: latest
+gitlab_ci_runner_version:
 
 gitlab_ci_concurrent: 1
 
