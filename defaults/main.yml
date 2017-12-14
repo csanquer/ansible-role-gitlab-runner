@@ -11,6 +11,15 @@ gitlab_ci_runner_registration: []
     #     token: <gitlab ci token>
     #     executor: shell
     #     locked: false
+    #     cache: false
+    #     cache_server:
+    #     cache_access_key:
+    #     cache_secret_key:
+    #     cache_bucket:
+    #     cache_bucket_region:
+    #     cache_path:  ci-runner<num>
+    #     cache_insecure: false
+    #     cache_shared: false
 
 gitlab_ci_cleanup_docker_enabled: false
 

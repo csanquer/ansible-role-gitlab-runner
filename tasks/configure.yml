@@ -27,6 +27,15 @@
     --docker-image {{ item.item.docker_image|default('python:2.7') }}
     --locked={{ 'true' if item.item.locked|default(false) else 'false' }}
     {{ ' --docker-privileged ' if (item.item.docker_privileged|default(false)) else '' }}
+    {{ '--cache-type s3'  if (item.item.cache|default(false)) else '' }}
+    {{ ('--cache-s3-server-address ' ~ item.item.cache_server) if (item.item.cache|default(false) and item.item.cache_server|default('') != '') else '' }}
+    {{ ('--cache-s3-access-key ' ~ item.item.cache_access_key) if (item.item.cache|default(false) and item.item.cache_access_key|default('') != '') else '' }}
+    {{ ('--cache-s3-secret-key ' ~ item.item.cache_secret_key) if (item.item.cache|default(false) and item.item.cache_secret_key|default('') != '') else '' }}
+    {{ ('--cache-s3-bucket-name ' ~ item.item.cache_bucket) if (item.item.cache|default(false) and item.item.cache_bucket|default('') != '') else '' }}
+    {{ ('--cache-s3-bucket-location ' ~ item.item.cache_bucket_region) if (item.item.cache|default(false) and item.item.cache_bucket_region|default('') != '') else '' }}
+    {{ ('--cache-s3-cache-path ' ~ item.item.cache_path) if (item.item.cache|default(false) and item.item.cache_path|default('') != '') else '' }}
+    {{ '--cache-s3-insecure ' if (item.item.cache_insecure|default(false)) else '' }}
+    {{ '--cache-cache-shared ' if (item.item.cache_shared|default(false)) else '' }}
 
   when: item.stdout == '0'
   with_items: "{{ gitlab_ci_registered_runner_result.results }}"
