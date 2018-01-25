@@ -10,6 +10,7 @@ gitlab_ci_runner_registration: []
     #     url: https://git.kilix.net/ci
     #     token: <gitlab ci token>
     #     tags: []
+    #     run_untagged: true
     #     executor: shell
     #     locked: false
     #     cache: false

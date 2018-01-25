@@ -23,6 +23,7 @@
     --registration-token {{ item.item.token }}
     --name {{ item.item.name }}
     {{ (' --tag-list ' ~ "'" ~ item.item.tags|join(',') ~ "'") if (item.item.tags|length) else '' }}
+    {{ ' --run-untagged ' if (item.item.run_untagged|default(false)) else '' }}
     --executor {{ item.item.executor|default('docker') }}
     --locked={{ 'true' if (item.item.locked|default(false)) else 'false' }}
     --docker-image {{ item.item.docker_image|default('python:2.7') }}
